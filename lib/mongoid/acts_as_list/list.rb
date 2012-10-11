@@ -72,7 +72,7 @@ module Mongoid::ActsAsList
       def define_position_field(field_name)
         field field_name, type: Integer
 
-        set_callback :validation, :before, if: -> { new? && not_in_list? } do |doc|
+        set_callback :validation, :before, if: -> { new_record? && not_in_list? } do |doc|
           doc[field_name] = doc.send(:next_available_position_in_list)
         end
 
