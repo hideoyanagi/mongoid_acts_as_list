@@ -341,7 +341,8 @@ module Mongoid::ActsAsList
     end
 
     def last_item_in_list
-      items_in_list.order_by_position.last
+      #items_in_list.order_by_position.last
+      items_in_list.sort(position: 1).last
     end
 
     def last_position_in_list
